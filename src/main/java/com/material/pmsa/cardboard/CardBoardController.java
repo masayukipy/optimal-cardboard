@@ -39,7 +39,7 @@ public class CardBoardController {
         n.setDimensionalWeight(dimensionalWeight);
         n.setRemark(remark);
         cardBoardRepository.save(n);
-        return "abc";
+        return "created new border";
     }
 
     @GetMapping(path = "/all-cardboard")

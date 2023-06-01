@@ -286,7 +286,7 @@
                         <!-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Input groups</h4> -->
 
                         <!-- Basic Bootstrap Table -->
-                        <div class="card">
+                        <div class="card pb-2">
                             <div class="dataTables_wrapper dt-bootstrap5 no-footer">
                                 <div class="card-header flex-column flex-md-row">
                                     <div class="head-label text-center">
@@ -295,7 +295,8 @@
                                     <div class="dt-action-buttons text-end pt-3 pt-md-0">
                                         <div class="dt-buttons btn-group flex-wrap">
                                             <button class="btn btn-secondary create-new btn-primary" tabindex="0"
-                                                aria-controls="DataTables_Table_0" type="button" onclick="openCreateModal()">
+                                                aria-controls="DataTables_Table_0" type="button"
+                                                onclick="openCreateModal()">
                                                 <span>
                                                     <i class="mdi mdi-plus me-sm-1"></i>
                                                     <span class="d-none d-sm-inline-block">新しく追加する</span>
@@ -396,7 +397,7 @@
                                             <span id="shippingSize2" class="input-group-text"><i
                                                     class="mdi mdi-circle-outline"></i></span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="shippingSize" class="form-control dt-full-name"
+                                                <input type="number" id="shippingSize" class="form-control dt-full-name"
                                                     name="shippingSize" placeholder="60" aria-label="60"
                                                     aria-describedby="shippingSize2" />
                                                 <label for="shippingSize">運送サイズ</label>
@@ -408,7 +409,7 @@
                                             <span id="cardboardNo2" class="input-group-text"><i
                                                     class="mdi mdi-circle-outline"></i></span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="cardboardNo" class="form-control dt-full-name"
+                                                <input type="number" id="cardboardNo" class="form-control dt-full-name"
                                                     name="cardboardNo" placeholder="40" aria-label="40"
                                                     aria-describedby="cardboardNo2" />
                                                 <label for="cardboardNo">段ボールNO.</label>
@@ -432,7 +433,7 @@
                                             <span id="lengthOuter2" class="input-group-text"><i
                                                     class="mdi mdi-circle-outline"></i></span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="lengthOuter" class="form-control dt-full-name"
+                                                <input type="number" id="lengthOuter" class="form-control dt-full-name"
                                                     name="lengthOuter" placeholder="200" aria-label="200"
                                                     aria-describedby="lengthOuter2" />
                                                 <label for="lengthOuter">長さ(外)</label>
@@ -444,7 +445,7 @@
                                             <span id="widthOuter2" class="input-group-text"><i
                                                     class="mdi mdi-circle-outline"></i></span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="widthOuter" class="form-control dt-full-name"
+                                                <input type="number" id="widthOuter" class="form-control dt-full-name"
                                                     name="widthOuter" placeholder="130" aria-label="130"
                                                     aria-describedby="widthOuter2" />
                                                 <label for="widthOuter">幅(外)</label>
@@ -456,7 +457,7 @@
                                             <span id="heightOuter2" class="input-group-text"><i
                                                     class="mdi mdi-circle-outline"></i></span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="heightOuter" class="form-control dt-full-name"
+                                                <input type="number" id="heightOuter" class="form-control dt-full-name"
                                                     name="heightOuter" placeholder="61" aria-label="61"
                                                     aria-describedby="heightOuter2" />
                                                 <label for="heightOuter">高さ(外)</label>
@@ -468,8 +469,9 @@
                                             <span id="dimensionalWeight2" class="input-group-text"><i
                                                     class="mdi mdi-circle-outline"></i></span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="dimensionalWeight" class="form-control dt-full-name"
-                                                    name="dimensionalWeight" placeholder="0.5" aria-label="0.5"
+                                                <input type="number" id="dimensionalWeight"
+                                                    class="form-control dt-full-name" name="dimensionalWeight"
+                                                    placeholder="0.5" aria-label="0.5"
                                                     aria-describedby="dimensionalWeight2" />
                                                 <label for="dimensionalWeight">容積重量</label>
                                             </div>
@@ -488,12 +490,34 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit"
-                                            class="btn btn-primary data-submit me-sm-3 me-1">Submit</button>
+                                        <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1"
+                                            onclick="createNewBorder()">作成</button>
                                         <button type="reset" class="btn btn-outline-secondary"
-                                            data-bs-dismiss="offcanvas" onclick="closeCreateModal()">Cancel</button>
+                                            data-bs-dismiss="offcanvas" onclick="closeCreateModal()">キャンセル</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#confirmModal" style="visibility: hidden;"></button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="modalCenterTitle">一部のフィールドが空白になっています</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" onclick="createBorder()" data-bs-dismiss="modal">作成</button>
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                            キャンセル
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!--/ Basic Bootstrap Table -->
