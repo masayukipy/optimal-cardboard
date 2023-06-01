@@ -39,3 +39,20 @@ function showToast(type, title, msg) {
     toastr[type](msg, title);
 }
 
+
+function openCreateModal() {
+    document.getElementById('add-new-record').setAttribute('class', 'offcanvas offcanvas-end show');
+    document.getElementById('add-new-record').setAttribute('aria-modal', 'true');
+    document.getElementById('add-new-record').setAttribute('role', 'dialog');
+    let a = document.createElement('div');
+    //  class="offcanvas-backdrop fade show"
+    a.setAttribute("class", "offcanvas-backdrop fade show")
+    a.setAttribute("id", "backdrop")
+    a.setAttribute("onclick", "closeCreateModal()")
+    document.getElementById('add-new-record').insertAdjacentElement('afterend', a)
+}
+
+function closeCreateModal() {
+    document.getElementById('add-new-record').setAttribute('class', 'offcanvas offcanvas-end');
+    document.getElementById("backdrop").remove()
+}
