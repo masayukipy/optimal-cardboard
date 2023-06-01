@@ -286,7 +286,23 @@
 
                         <!-- Basic Bootstrap Table -->
                         <div class="card">
-                            <h5 class="card-header">Table Basic</h5>
+                            <div class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="card-header flex-column flex-md-row">
+                                <div class="head-label text-center">
+                                    <h5 class="card-title mb-0">マスタ</h5>
+                                </div>
+                                <div class="dt-action-buttons text-end pt-3 pt-md-0">
+                                    <div class="dt-buttons btn-group flex-wrap">
+                                        <button class="btn btn-secondary create-new btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button">
+                                            <span>
+                                                <i class="mdi mdi-plus me-sm-1"></i>
+                                                <span class="d-none d-sm-inline-block">新しく追加する</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <h5 class="card-header">Table Basic</h5> -->
                             <div class="table-responsive text-nowrap">
                                 <table class="table">
                                     <thead>
@@ -333,6 +349,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
                         </div>
                         <!--/ Basic Bootstrap Table -->
 
