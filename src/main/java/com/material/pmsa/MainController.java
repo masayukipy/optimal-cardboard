@@ -29,14 +29,14 @@ public class MainController {
 	@GetMapping("/admin")
 	public String admin(ModelMap model) {
 		Iterable<Cardboard> allCardboards = cardBoardRepository.findAll();
-		ObjectMapper objectMapper = new ObjectMapper();
-		String jsonString = null;
-		try {
-			jsonString = objectMapper.writeValueAsString(allCardboards);
-		} catch(JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("allCardboards", jsonString);
+		// ObjectMapper objectMapper = new ObjectMapper();
+		// String jsonString = null;
+		// try {
+		// 	jsonString = objectMapper.writeValueAsString(allCardboards);
+		// } catch(JsonProcessingException e) {
+		// 	e.printStackTrace();
+		// }
+		model.addAttribute("allCardboards", allCardboards);
 		return "admin/index";
 	}
 }

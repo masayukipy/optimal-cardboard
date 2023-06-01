@@ -10,34 +10,34 @@ import jakarta.persistence.Column;
 public class Cardboard {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    public Integer id;
     
     @Column(nullable = true)
-    private String companySize;
+    public String companySize;
     
     @Column(nullable = true)
-    private Integer shippingSize;
+    public Integer shippingSize;
     
     @Column(nullable = true)
-    private Integer cardboardNo;
+    public Integer cardboardNo;
     
     @Column(nullable = true)
-    private String cardboardType;
+    public String cardboardType;
     
     @Column(nullable = true)
-    private Integer lengthOuter;
+    public Integer lengthOuter;
     
     @Column(nullable = true)
-    private Integer widthOuter;
+    public Integer widthOuter;
     
     @Column(nullable = true)
-    private Integer heightOuter;
+    public Integer heightOuter;
     
     @Column(nullable = true)
-    private Integer dimensionalWeight;
+    public Integer dimensionalWeight;
     
     @Column(nullable = true)
-    private String remark;
+    public String remark;
 
     public Integer getId() {
       return id;
