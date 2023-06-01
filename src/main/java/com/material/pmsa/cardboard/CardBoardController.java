@@ -25,7 +25,7 @@ public class CardBoardController {
         @RequestParam(required = false) Integer lengthOuter, 
         @RequestParam(required = false) Integer widthOuter, 
         @RequestParam(required = false) Integer heightOuter, 
-        @RequestParam(required = false) Integer dimensionalWeight, 
+        @RequestParam(required = false) Float dimensionalWeight, 
         @RequestParam(required = false) String remark
     ) {
         Cardboard n = new Cardboard();

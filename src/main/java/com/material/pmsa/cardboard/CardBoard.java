@@ -34,7 +34,7 @@ public class Cardboard {
     public Integer heightOuter;
     
     @Column(nullable = true)
-    public Integer dimensionalWeight;
+    public Float dimensionalWeight;
     
     @Column(nullable = true)
     public String remark;
@@ -54,11 +54,11 @@ public class Cardboard {
         this.remark = remark;
     }
 
-    public Integer getDimensionalWeight() {
+    public Float getDimensionalWeight() {
         return dimensionalWeight;
     }
     
-    public void setDimensionalWeight(Integer dimensionalWeight) {
+    public void setDimensionalWeight(Float dimensionalWeight) {
         this.dimensionalWeight = dimensionalWeight;
     }
 
