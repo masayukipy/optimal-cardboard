@@ -7,11 +7,16 @@ import org.springframework.ui.ModelMap;
 
 
 @Controller
-public class HelloController {
+public class MainController {
     
 	@GetMapping("/")
 	public String index(ModelMap model) {
         model.addAttribute("message", "Greetings from Spring Boot!");
 		return "home/index";
+	}
+
+	@GetMapping("/admin")
+	public String admin(ModelMap model) {
+		return "admin/index";
 	}
 }
