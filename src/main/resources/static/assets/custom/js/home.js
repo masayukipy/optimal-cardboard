@@ -39,7 +39,7 @@ function showToast(type, title, msg) {
     toastr[type](msg, title);
 }
 
-function clearCreateModal(
+function initCreateModal(
     companySize = "",
     shippingSize = "",
     cardboardNo = "",
@@ -50,6 +50,7 @@ function clearCreateModal(
     dimensionalWeight = "",
     remark = ""
 ) {
+    console.log(companySize)
     $("#companySize").val(companySize)
     $("#shippingSize").val(shippingSize)
     $("#cardboardNo").val(cardboardNo)
@@ -63,7 +64,7 @@ function clearCreateModal(
 
 
 function openCreateModal() {
-    clearCreateModal()
+    initCreateModal()
     document.getElementById('add-new-record').setAttribute('class', 'offcanvas offcanvas-end show');
     document.getElementById('add-new-record').setAttribute('aria-modal', 'true');
     document.getElementById('add-new-record').setAttribute('role', 'dialog');
