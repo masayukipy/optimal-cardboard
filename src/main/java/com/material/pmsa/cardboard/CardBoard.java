@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class CardBoard {
+public class Cardboard {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
