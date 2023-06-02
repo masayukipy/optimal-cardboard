@@ -53,7 +53,8 @@ public class MainController {
 		@RequestParam(required = true) Float weight,
 		@RequestParam(required = true) Float gap
 	) {
-		Iterable<Cardboard> allCardboards = cardBoardRepository.findAll();
+		Sort sort = Sort.by(Sort.Direction.ASC, "id"); 
+		Iterable<Cardboard> allCardboards = cardBoardRepository.findAll(sort);
 
 		for (Cardboard cardboard : allCardboards) {
 			Integer count = 0;
