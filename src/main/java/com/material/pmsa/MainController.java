@@ -44,7 +44,7 @@ public class MainController {
 	}
 
 	@PostMapping("/select-optimal-board")
-	public @ResponseBody String selectOptimalBoard (
+	public @ResponseBody Cardboard selectOptimalBoard (
 		@RequestParam(required = true) Float length,
 		@RequestParam(required = true) Float width,
 		@RequestParam(required = true) Float height,
@@ -52,26 +52,34 @@ public class MainController {
 		@RequestParam(required = true) Float gap
 	) {
 		Iterable<Cardboard> allCardboards = cardBoardRepository.findAll();
-		String lengthStr = Float.toString(length);
-		String widthStr = Float.toString(width);
-		String heightStr = Float.toString(height);
-		String weightStr = Float.toString(weight);
-		String gapStr = Float.toString(gap);
 
 		for (Cardboard cardboard : allCardboards) {
-			Integer Count = 0;
+			Integer count = 0;
+			if (cardboard.lengthOuter == null || cardboard.widthOuter == null || cardboard.heightOuter == null || cardboard.weight == null) {
+				continue;
+			}
 			if (cardboard.lengthOuter > length * 10 + gap * 2 * 10) {
-				Count ++;
+				count ++;
 			}
 			if (cardboard.widthOuter > width * 10 + gap * 2 * 10) {
-				Count ++;
+				count ++;
 			}
 			if (cardboard.heightOuter > height * 10 + gap * 2 * 10) {
-				Count ++;
+				count ++;
 			}
-			// if (cardboard.dimensionalWeight)
+			if (cardboard.weight > weight) {
+				count ++;
+			}
+			if(count == 4) {
+				// String jsonString = null;
+				// try {
+				// 	jsonString = objectMapper.writeValueAsString(allCardboards);
+				// } catch(JsonProcessingException e) {
+				// 	e.printStackTrace();
+				// }
+				return allCardboards.iterator().next();
+			}
 		}
-
-		return lengthStr + widthStr + heightStr + weightStr + gapStr;
+		return null;
 	}
 }

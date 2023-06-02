@@ -5,7 +5,6 @@ function operateBox() {
     const height = $("#height").val()
     const weight = $("#weight").val()
     const gap = $("#gap").val()
-    console.log(width, height, length, gap, weight)
     if(length == "" || width == "" || height == "" || weight == "" || gap == "") {
         showToast("error", "入力エラー", "値を全て入力してください。")
         return
@@ -21,7 +20,16 @@ function operateBox() {
         "/select-optimal-board",
         data,
         ((resp) => {
-            console.log(resp)
+            try{
+                if(resp == "") {
+                    showToast("info", "警告", "適切な梱包材がありません。")
+                }
+                else{
+                    showToast("success", "成功", `${resp.cardboardType}が選択されました。`)
+                }
+            } catch {
+                showToast("error", "エラー", "不明なエラー")
+            }
         })
     )
 }
@@ -151,7 +159,7 @@ function createBorder() {
                     }
                 }
                 catch {
-                    showToast("success", "Create", "Unknown Error")
+                    showToast("success", "Create", "不明なエラー")
                 }
             }
         )
@@ -171,7 +179,7 @@ function createBorder() {
                     }
                 }
                 catch {
-                    showToast("error", "Modify", "Unknown Error")
+                    showToast("error", "変更", "不明なエラー")
                 }
             }
         )
@@ -227,7 +235,7 @@ function deleteBoard() {
                 }
             }
             catch {
-                showToast("success", "Delete", "Unknown Error")
+                showToast("success", "Delete", "不明なエラー")
             }
         }
     )
