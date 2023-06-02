@@ -40,6 +40,7 @@ function showToast(type, title, msg) {
 }
 
 function initCreateModal(
+    cardboardId = "",
     companySize = "",
     shippingSize = "",
     cardboardNo = "",
@@ -50,7 +51,22 @@ function initCreateModal(
     dimensionalWeight = "",
     remark = ""
 ) {
-    console.log(companySize)
+    console.log(companySize,shippingSize,
+        cardboardNo,
+        cardboardType,
+        lengthOuter,
+        widthOuter,
+        heightOuter,
+        dimensionalWeight,
+        remark,)
+    if(cardboardId == "") {
+        $("#createNewBordTempBtn").text("作成")
+        $("#createNewBoardBtn").text("作成")
+    }else {
+        $("#createNewBordTempBtn").text("変更")
+        $("#createNewBoardBtn").text("変更")
+    }
+    $("#cardboardId").val(cardboardId)
     $("#companySize").val(companySize)
     $("#shippingSize").val(shippingSize)
     $("#cardboardNo").val(cardboardNo)
@@ -64,7 +80,6 @@ function initCreateModal(
 
 
 function openCreateModal() {
-    initCreateModal()
     document.getElementById('add-new-record').setAttribute('class', 'offcanvas offcanvas-end show');
     document.getElementById('add-new-record').setAttribute('aria-modal', 'true');
     document.getElementById('add-new-record').setAttribute('role', 'dialog');
@@ -82,6 +97,7 @@ function closeCreateModal() {
 }
 
 function createBorder() {
+    closeCreateModal()
     let companySize = $("#companySize").val()
     let shippingSize = $("#shippingSize").val()
     let cardboardNo = $("#cardboardNo").val()
@@ -91,31 +107,58 @@ function createBorder() {
     let heightOuter = $("#heightOuter").val()
     let dimensionalWeight = $("#dimensionalWeight").val()
     let remark = $("#remark").val()
-    $.post(
-        "/cardboard/add-cardboard",
-        {
-            companySize: companySize,
-            shippingSize: shippingSize,
-            cardboardNo: cardboardNo,
-            cardboardType: cardboardType,
-            lengthOuter: lengthOuter,
-            widthOuter: widthOuter,
-            heightOuter: heightOuter,
-            dimensionalWeight: dimensionalWeight,
-            remark: remark
-        },
-        (resp) => {
-            console.log(resp.data)
-            try{
-                if(resp.data == "created new border") {
-                    
+    let cardboardId = $("#cardboardId").val()
+    
+    let data = {
+        companySize: companySize,
+        shippingSize: shippingSize,
+        cardboardNo: cardboardNo,
+        cardboardType: cardboardType,
+        lengthOuter: lengthOuter,
+        widthOuter: widthOuter,
+        heightOuter: heightOuter,
+        dimensionalWeight: dimensionalWeight,
+        remark: remark
+    }
+    if(cardboardId == "") {
+        $("#createNewBordTempBtn").text("作成")
+        $("#createNewBoardBtn").text("作成")
+        $.post(
+            "/cardboard/add-cardboard",
+            data,
+            (resp) => {
+                console.log(resp)
+                try{
+                    if(resp == "created new board") {
+                        location.reload()
+                    }
+                }
+                catch {
+                    showToast("success", "Create", "Unknown Error")
                 }
             }
-            catch {
-
+        )
+    }else {
+        data.id = cardboardId
+        console.log(data)
+        $("#createNewBordTempBtn").text("変更")
+        $("#createNewBoardBtn").text("変更")
+        $.post(
+            "/cardboard/modify-cardboard",
+            data,
+            (resp) => {
+                console.log(resp)
+                try{
+                    if(resp == "modified board") {
+                        location.reload()
+                    }
+                }
+                catch {
+                    showToast("error", "Modify", "Unknown Error")
+                }
             }
-        }
-    )
+        )
+    }
 }
 
 function createNewBorder() {
@@ -132,7 +175,7 @@ function createNewBorder() {
         document.querySelector('[data-bs-target="#confirmModal"]').click();
         return
     }
-    // createBorder()
+    createBorder()
     console.log(companySize,
         shippingSize,
         cardboardNo,

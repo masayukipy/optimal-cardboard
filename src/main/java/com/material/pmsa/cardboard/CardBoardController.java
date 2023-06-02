@@ -1,7 +1,9 @@
 package com.material.pmsa.cardboard;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +41,39 @@ public class CardBoardController {
         n.setDimensionalWeight(dimensionalWeight);
         n.setRemark(remark);
         cardBoardRepository.save(n);
-        return "created new border";
+        return "created new board";
+    }
+
+    @PostMapping(path = "/modify-cardboard")
+    public @ResponseBody String modifyCardboard(
+        @RequestParam(required = true) Integer id,
+        @RequestParam(required = false) String companySize, 
+        @RequestParam(required = false) Integer shippingSize, 
+        @RequestParam(required = false) Integer cardboardNo, 
+        @RequestParam(required = false) String cardboardType, 
+        @RequestParam(required = false) Integer lengthOuter, 
+        @RequestParam(required = false) Integer widthOuter, 
+        @RequestParam(required = false) Integer heightOuter, 
+        @RequestParam(required = false) Float dimensionalWeight, 
+        @RequestParam(required = false) String remark
+    ) {
+        Optional<Cardboard> cardboardEntity = cardBoardRepository.findById(id);
+        if (cardboardEntity.isPresent()) {
+            Cardboard entity = cardboardEntity.get();
+            entity.setCompanySize(companySize);
+            entity.setShippingSize(shippingSize);
+            entity.setCardBoardNo(cardboardNo);
+            entity.setCardboardType(cardboardType);
+            entity.setLengthOuter(lengthOuter);
+            entity.setWidthOuter(widthOuter);
+            entity.setHeightOuter(heightOuter);
+            entity.setDimensionalWeight(dimensionalWeight);
+            entity.setRemark(remark);
+            cardBoardRepository.save(entity);
+        } else {
+            return "not found";
+        }
+        return "modified board";
     }
 
     @GetMapping(path = "/all-cardboard")

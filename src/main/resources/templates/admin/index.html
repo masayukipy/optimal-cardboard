@@ -296,7 +296,7 @@
                                         <div class="dt-buttons btn-group flex-wrap">
                                             <button class="btn btn-secondary create-new btn-primary" tabindex="0"
                                                 aria-controls="DataTables_Table_0" type="button"
-                                                onclick="openCreateModal()">
+                                                onclick="initCreateModal(); openCreateModal()">
                                                 <span>
                                                     <i class="mdi mdi-plus me-sm-1"></i>
                                                     <span class="d-none d-sm-inline-block">新しく追加する</span>
@@ -343,8 +343,28 @@
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="javascript:void(0);"
-                                                                th:data-val="${cardboard.companySize}"
-                                                                th:onclick="initCreateModal(this.getAttribute('data-val'))">
+                                                            th:data-val-id="${cardboard.id}"
+                                                            th:data-val-companySize="${cardboard.companySize}"
+                                                            th:data-val-shippingSize="${cardboard.shippingSize}"
+                                                            th:data-val-cardboardNo="${cardboard.cardboardNo}"
+                                                            th:data-val-cardboardType="${cardboard.cardboardType}"
+                                                            th:data-val-lengthOuter="${cardboard.lengthOuter}"
+                                                            th:data-val-widthOuter="${cardboard.widthOuter}"
+                                                            th:data-val-heightOuter="${cardboard.heightOuter}"
+                                                            th:data-val-dimensionalWeight="${cardboard.dimensionalWeight}"
+                                                            th:data-val-remark="${cardboard.remark}"
+                                                                th:onclick="initCreateModal(
+                                                                    this.getAttribute('data-val-id'),
+                                                                    this.getAttribute('data-val-companySize'),
+                                                                    this.getAttribute('data-val-shippingSize'),
+                                                                    this.getAttribute('data-val-cardboardNo'),
+                                                                    this.getAttribute('data-val-cardboardType'),
+                                                                    this.getAttribute('data-val-lengthOuter'),
+                                                                    this.getAttribute('data-val-widthOuter'),
+                                                                    this.getAttribute('data-val-heightOuter'),
+                                                                    this.getAttribute('data-val-dimensionalWeight'),
+                                                                    this.getAttribute('data-val-remark')
+                                                                ); openCreateModal()">
                                                                 <i class="mdi mdi-pencil-outline me-1"></i> Edit
                                                             </a>
                                                             <a class="dropdown-item" href="javascript:void(0);">
@@ -385,6 +405,7 @@
                             <div class="offcanvas-body flex-grow-1">
                                 <form class="add-new-record pt-0 row g-3" id="form-add-new-record"
                                     onsubmit="return false">
+                                    <input type="hidden" id="cardboardId" />
                                     <div class="col-sm-12">
                                         <div class="input-group input-group-merge">
                                             <span id="companySize2" class="input-group-text"><i
@@ -474,7 +495,7 @@
                                             <span id="dimensionalWeight2" class="input-group-text"><i
                                                     class="mdi mdi-circle-outline"></i></span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="number" id="dimensionalWeight"
+                                                <input type="text" id="dimensionalWeight"
                                                     class="form-control dt-full-name" name="dimensionalWeight"
                                                     placeholder="0.5" aria-label="0.5"
                                                     aria-describedby="dimensionalWeight2" />
@@ -496,7 +517,7 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1"
-                                            onclick="createNewBorder()">作成</button>
+                                            onclick="createNewBorder();" id="createNewBordTempBtn">作成</button>
                                         <button type="reset" class="btn btn-outline-secondary"
                                             data-bs-dismiss="offcanvas" onclick="closeCreateModal()">キャンセル</button>
                                     </div>
@@ -517,7 +538,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" onclick="createBorder()" data-bs-dismiss="modal">作成</button>
+                                        <button type="button" class="btn btn-primary" onclick="createBorder()" data-bs-dismiss="modal" id="createNewBoardBtn">作成</button>
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                             キャンセル
                                         </button>
