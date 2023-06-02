@@ -26,6 +26,20 @@ function operateBox() {
                 }
                 else{
                     showToast("success", "成功", `${resp.cardboardType}が選択されました。`)
+                    $("#result_title").text(resp.cardboardType)
+                    $("#result_companySize").text(resp.companySize)
+                    $("#result_shippingSize").text(resp.shippingSize)
+                    $("#result_cardboardNo").text(resp.cardboardNo)
+                    $("#result_cardboardType").text(resp.cardboardType)
+                    $("#result_lengthOuter").text(resp.lengthOuter)
+                    $("#result_widthOuter").text(resp.widthOuter)
+                    $("#result_heightOuter").text(resp.heightOuter)
+                    $("#result_dimensionalWeight").text(resp.dimensionalWeight)
+                    $("#result_weight").text(resp.weight)
+                    $("#result_remark").text(resp.remark)
+                    if(resp.remark == ""){
+                        $("#result_remark").text("0")
+                    }
                 }
             } catch {
                 showToast("error", "エラー", "不明なエラー")
