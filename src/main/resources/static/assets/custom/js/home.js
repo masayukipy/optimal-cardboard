@@ -256,7 +256,7 @@ function deleteBoard() {
     
 }
 
-$(document).ready(() => {
+function initDb(){
     a = [
         [
             "1",
@@ -1371,33 +1371,33 @@ $(document).ready(() => {
             dimensionalWeight = a[i][7]
             weight = a[i][8]
             remark = ""
-        //     console.log(companySize, shippingSize, cardboardNo, cardboardType, lengthOuter, widthOuter, heightOuter, dimensionalWeight)
-        //     $.post(
-        //         "/cardboard/add-cardboard",
-        //         {
-        //             companySize: companySize,
-        //             shippingSize: shippingSize,
-        //             cardboardNo: cardboardNo,
-        //             cardboardType: cardboardType,
-        //             lengthOuter: lengthOuter,
-        //             widthOuter: widthOuter,
-        //             heightOuter: heightOuter,
-        //             dimensionalWeight: dimensionalWeight,
-        //             weight: weight,
-        //             remark: remark
-        //         },
-        //         (resp) => {
-        //             console.log(resp.data)
-        //             try{
-        //                 if(resp.data == "created new border") {
+            console.log(companySize, shippingSize, cardboardNo, cardboardType, lengthOuter, widthOuter, heightOuter, dimensionalWeight)
+            $.post(
+                "/cardboard/add-cardboard",
+                {
+                    companySize: companySize,
+                    shippingSize: shippingSize,
+                    cardboardNo: cardboardNo,
+                    cardboardType: cardboardType,
+                    lengthOuter: lengthOuter,
+                    widthOuter: widthOuter,
+                    heightOuter: heightOuter,
+                    dimensionalWeight: dimensionalWeight,
+                    weight: weight,
+                    remark: remark
+                },
+                (resp) => {
+                    console.log(resp.data)
+                    try{
+                        if(resp.data == "created new border") {
                             
-        //                 }
-        //             }
-        //             catch {
+                        }
+                    }
+                    catch {
             
-        //             }
-        //         }
-        //     )
+                    }
+                }
+            )
         })
     }
-})
+}
