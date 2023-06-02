@@ -76,6 +76,19 @@ public class CardBoardController {
         return "modified board";
     }
 
+    @PostMapping(path = "/delete-cardboard")
+    public @ResponseBody String deleteCardboard(
+        @RequestParam(required = true) Integer id
+    ) {
+        Optional<Cardboard> cardboardEntity = cardBoardRepository.findById(id);
+        if (cardboardEntity.isPresent()) {
+            cardBoardRepository.deleteById(id);
+        } else {
+            return "not found";
+        }
+        return "deleted board";
+    }
+
     @GetMapping(path = "/all-cardboard")
     public @ResponseBody Iterable<Cardboard> getAllCardboards() {
         return cardBoardRepository.findAll();

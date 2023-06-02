@@ -343,16 +343,16 @@
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="javascript:void(0);"
-                                                            th:data-val-id="${cardboard.id}"
-                                                            th:data-val-companySize="${cardboard.companySize}"
-                                                            th:data-val-shippingSize="${cardboard.shippingSize}"
-                                                            th:data-val-cardboardNo="${cardboard.cardboardNo}"
-                                                            th:data-val-cardboardType="${cardboard.cardboardType}"
-                                                            th:data-val-lengthOuter="${cardboard.lengthOuter}"
-                                                            th:data-val-widthOuter="${cardboard.widthOuter}"
-                                                            th:data-val-heightOuter="${cardboard.heightOuter}"
-                                                            th:data-val-dimensionalWeight="${cardboard.dimensionalWeight}"
-                                                            th:data-val-remark="${cardboard.remark}"
+                                                                th:data-val-id="${cardboard.id}"
+                                                                th:data-val-companySize="${cardboard.companySize}"
+                                                                th:data-val-shippingSize="${cardboard.shippingSize}"
+                                                                th:data-val-cardboardNo="${cardboard.cardboardNo}"
+                                                                th:data-val-cardboardType="${cardboard.cardboardType}"
+                                                                th:data-val-lengthOuter="${cardboard.lengthOuter}"
+                                                                th:data-val-widthOuter="${cardboard.widthOuter}"
+                                                                th:data-val-heightOuter="${cardboard.heightOuter}"
+                                                                th:data-val-dimensionalWeight="${cardboard.dimensionalWeight}"
+                                                                th:data-val-remark="${cardboard.remark}"
                                                                 th:onclick="initCreateModal(
                                                                     this.getAttribute('data-val-id'),
                                                                     this.getAttribute('data-val-companySize'),
@@ -367,7 +367,10 @@
                                                                 ); openCreateModal()">
                                                                 <i class="mdi mdi-pencil-outline me-1"></i> Edit
                                                             </a>
-                                                            <a class="dropdown-item" href="javascript:void(0);">
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                th:data-val-id="${cardboard.id}"
+                                                                th:onclick="openDeleteModal(this.getAttribute('data-val-id'))"
+                                                            >
                                                                 <i class="mdi mdi-trash-can-outline me-1"></i> Delete
                                                             </a>
                                                         </div>
@@ -525,10 +528,10 @@
                             </div>
                         </div>
 
-                        <!-- Button trigger modal -->
+                        <!-- Create Board Validate modal Button -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#confirmModal" style="visibility: hidden;"></button>
-                        <!-- Modal -->
+                        <!-- Create Board Validate modal -->
                         <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -539,6 +542,30 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" onclick="createBorder()" data-bs-dismiss="modal" id="createNewBoardBtn">作成</button>
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                            キャンセル
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ Basic Bootstrap Table -->
+
+                        <!-- Delete Confirm modal Button -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#deleteConfirmModal" style="visibility: hidden;"></button>
+                        <!-- Create Board Validate modal -->
+                        <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">本当に削除しますか？</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" id="deleteId"/>
+                                        <button type="button" class="btn btn-primary" onclick="deleteBoard()" data-bs-dismiss="modal" id="deleteBtn">削除</button>
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                             キャンセル
                                         </button>
