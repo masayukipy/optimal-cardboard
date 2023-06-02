@@ -57,6 +57,21 @@ public class MainController {
 		String heightStr = Float.toString(height);
 		String weightStr = Float.toString(weight);
 		String gapStr = Float.toString(gap);
+
+		for (Cardboard cardboard : allCardboards) {
+			Integer Count = 0;
+			if (cardboard.lengthOuter > length * 10 + gap * 2 * 10) {
+				Count ++;
+			}
+			if (cardboard.widthOuter > width * 10 + gap * 2 * 10) {
+				Count ++;
+			}
+			if (cardboard.heightOuter > height * 10 + gap * 2 * 10) {
+				Count ++;
+			}
+			// if (cardboard.dimensionalWeight)
+		}
+
 		return lengthStr + widthStr + heightStr + weightStr + gapStr;
 	}
 }

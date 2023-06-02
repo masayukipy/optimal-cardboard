@@ -319,6 +319,7 @@
                                                 <th>幅(外)</th>
                                                 <th>高さ(外)</th>
                                                 <th>容積重量</th>
+                                                <th>重量</th>
                                                 <th>備考</th>
                                                 <th>アクション</th>
                                             </tr>
@@ -334,6 +335,7 @@
                                                 <td th:text="${cardboard.widthOuter ?: 'N/A'}"></td>
                                                 <td th:text="${cardboard.heightOuter ?: 'N/A'}"></td>
                                                 <td th:text="${cardboard.dimensionalWeight ?: 'N/A'}"></td>
+                                                <td th:text="${cardboard.weight ?: 'N/A'}"></td>
                                                 <td th:text="${cardboard.remark ?: ''}"></td>
                                                 <td>
                                                     <div class="dropdown">
@@ -352,6 +354,7 @@
                                                                 th:data-val-widthOuter="${cardboard.widthOuter}"
                                                                 th:data-val-heightOuter="${cardboard.heightOuter}"
                                                                 th:data-val-dimensionalWeight="${cardboard.dimensionalWeight}"
+                                                                th:data-val-weight="${cardboard.weight}"
                                                                 th:data-val-remark="${cardboard.remark}"
                                                                 th:onclick="initCreateModal(
                                                                     this.getAttribute('data-val-id'),
@@ -363,6 +366,7 @@
                                                                     this.getAttribute('data-val-widthOuter'),
                                                                     this.getAttribute('data-val-heightOuter'),
                                                                     this.getAttribute('data-val-dimensionalWeight'),
+                                                                    this.getAttribute('data-val-weight'),
                                                                     this.getAttribute('data-val-remark')
                                                                 ); openCreateModal()">
                                                                 <i class="mdi mdi-pencil-outline me-1"></i> Edit
@@ -389,6 +393,7 @@
                                                 <th>幅(外)</th>
                                                 <th>高さ(外)</th>
                                                 <th>容積重量</th>
+                                                <th>重量</th>
                                                 <th>備考</th>
                                                 <th>アクション</th>
                                             </tr>
@@ -503,6 +508,19 @@
                                                     placeholder="0.5" aria-label="0.5"
                                                     aria-describedby="dimensionalWeight2" />
                                                 <label for="dimensionalWeight">容積重量</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="input-group input-group-merge">
+                                            <span id="weightCardboard2" class="input-group-text"><i
+                                                    class="mdi mdi-circle-outline"></i></span>
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="weightCardboard"
+                                                    class="form-control dt-full-name" name="weightCardboard"
+                                                    placeholder="26" aria-label="26"
+                                                    aria-describedby="weightCardboard2" />
+                                                <label for="weightCardboard">重量</label>
                                             </div>
                                         </div>
                                     </div>

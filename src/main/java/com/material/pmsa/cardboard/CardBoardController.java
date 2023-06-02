@@ -27,6 +27,7 @@ public class CardBoardController {
         @RequestParam(required = false) Integer lengthOuter, 
         @RequestParam(required = false) Integer widthOuter, 
         @RequestParam(required = false) Integer heightOuter, 
+        @RequestParam(required = false) Float weight, 
         @RequestParam(required = false) Float dimensionalWeight, 
         @RequestParam(required = false) String remark
     ) {
@@ -38,6 +39,7 @@ public class CardBoardController {
         n.setLengthOuter(lengthOuter);
         n.setWidthOuter(widthOuter);
         n.setHeightOuter(heightOuter);
+        n.setWeight(weight);
         n.setDimensionalWeight(dimensionalWeight);
         n.setRemark(remark);
         cardBoardRepository.save(n);
@@ -54,6 +56,7 @@ public class CardBoardController {
         @RequestParam(required = false) Integer lengthOuter, 
         @RequestParam(required = false) Integer widthOuter, 
         @RequestParam(required = false) Integer heightOuter, 
+        @RequestParam(required = false) Float weight, 
         @RequestParam(required = false) Float dimensionalWeight, 
         @RequestParam(required = false) String remark
     ) {
@@ -67,6 +70,7 @@ public class CardBoardController {
             entity.setLengthOuter(lengthOuter);
             entity.setWidthOuter(widthOuter);
             entity.setHeightOuter(heightOuter);
+            entity.setWeight(weight);
             entity.setDimensionalWeight(dimensionalWeight);
             entity.setRemark(remark);
             cardBoardRepository.save(entity);
