@@ -1360,7 +1360,7 @@ $(document).ready(() => {
         ]
     ]
     for(let i = 0; i < a.length; i ++){
-        delay(i * 10).then(() => {
+        delay(i * 100).then(() => {
             companySize = a[i][0]
             shippingSize = a[i][1]
             cardboardNo = a[i][2]
