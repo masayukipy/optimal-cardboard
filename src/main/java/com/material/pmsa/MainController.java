@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.material.pmsa.cardboard.Cardboard;
 import com.material.pmsa.cardboard.CardboardRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Sort;
 
 
