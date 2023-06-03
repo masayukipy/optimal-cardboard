@@ -25,7 +25,7 @@
 コマンドウィンドウで次のコマンドを実行してプログラムを起動します。<br />
 `gradlew bootRun`<br />
 次のブラウザで `localhost:8080` に移動します。<br />
-基本ページ(`localhost:8080`)では、必要な値を入力して最適化された梱包材を選別できます。
-![ホーム](https://github.com/masayukipy/optimal-cardboard/blob/master/images/home.png)
-管理者ページ(`localhost：8080/admin`)では、段ボールを変更、削除、または追加できます。
-![管理者](https://github.com/masayukipy/optimal-cardboard/blob/master/images/admin.png)
+基本ページ(`localhost:8080`)では、必要な値を入力して最適化された梱包材を選別できます。<br/>
+![ホーム](https://github.com/masayukipy/optimal-cardboard/blob/master/images/home.png)<br/>
+管理者ページ(`localhost：8080/admin`)では、段ボールを変更、削除、または追加できます。<br/>
+![管理者](https://github.com/masayukipy/optimal-cardboard/blob/master/images/admin.png)<br/>
