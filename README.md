@@ -22,6 +22,7 @@
 
 
 ## 使用方法
+- mysql をインストールし、pmsa という名前のデータベースを作成し、`root` ユーザーのパスワードを `Abc123!@#` に設定する。
 - コマンドウィンドウで次のコマンドを実行してプログラムを起動します。<br />
 windows `.\gradlew bootRun`<br />
 ubuntu `./gradlew bootRun`<br />
